@@ -1,4 +1,9 @@
-function check(opt,ans){
+function check(opt,ans,index,tot){
+
+  var nextindex=index+1
+
+  $("#qu_"+index).hide();
+  $("#qu_"+nextindex).show();
     $.ajax({
         url:"./cms/save.php?action=updateScore",
         type:"POST",
@@ -7,6 +12,10 @@ function check(opt,ans){
             ans:ans
         },
       success: function(response){
+        if(nextindex>tot  ){
+          submit()
+        }
+
         console.log(`response`, response)
       }
  })
@@ -26,3 +35,4 @@ function submit(){
       }
  })
 }
+

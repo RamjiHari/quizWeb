@@ -37,35 +37,37 @@ $_SESSION['totques']=mysqli_num_rows($get_question);
                    $i=1;
                    while($row=mysqli_fetch_assoc($get_question)){
                   ?>
+                        <div style="display:none;" id=<?php echo  'qu_'.$i ?>>
                         <p><?php echo $i.' . '. $row['question']; ?></p>
 
-                        <div class="form-group pl-4">
-                            <input name="answer_<?php echo $row['qu_id'] ?>" onClick="check(1,<?php echo $row['correctIndex'] ?>)"  class="form-check-input" type="radio">
-                            <label class="form-check-label">
-                            <?php echo $row['option_one']; ?>
-                            </label>
-                            </div>
+<div class="form-group pl-4">
+    <input name="answer_<?php echo $row['qu_id'] ?>" onClick="check(1,<?php echo $row['correctIndex'] ?>,<?php echo $i; ?>,<?php echo $_SESSION['totques']?>)"  class="form-check-input" type="radio">
+    <label class="form-check-label">
+    <?php echo $row['option_one']; ?>
+    </label>
+    </div>
 
-                            <div class="form-group pl-4">
-                            <input name="answer_<?php echo $row['qu_id'] ?>" onClick="check(2,<?php echo $row['correctIndex'] ?>)"  class="form-check-input" type="radio">
-                            <label class="form-check-label">
-                            <?php echo $row['option_two']; ?>
-                            </label>
-                            </div>
+    <div class="form-group pl-4">
+    <input name="answer_<?php echo $row['qu_id'] ?>" onClick="check(2,<?php echo $row['correctIndex'] ?>,<?php echo $i; ?>,<?php echo $_SESSION['totques']?>)"  class="form-check-input" type="radio">
+    <label class="form-check-label">
+    <?php echo $row['option_two']; ?>
+    </label>
+    </div>
 
-                            <div class="form-group pl-4">
-                            <input name="answer_<?php echo $row['qu_id'] ?>" onClick="check(3,<?php echo $row['correctIndex'] ?>)"  class="form-check-input" type="radio">
-                            <label class="form-check-label">
-                            <?php echo $row['option_three']; ?>
-                            </label>
-                            </div>
+    <div class="form-group pl-4">
+    <input name="answer_<?php echo $row['qu_id'] ?>" onClick="check(3,<?php echo $row['correctIndex'] ?>,<?php echo $i; ?>,<?php echo $_SESSION['totques']?>)"  class="form-check-input" type="radio">
+    <label class="form-check-label">
+    <?php echo $row['option_three']; ?>
+    </label>
+    </div>
 
-                            <div class="form-group pl-4">
-                            <input name="answer_<?php echo $row['qu_id'] ?>" onClick="check(4,<?php echo $row['correctIndex'] ?>)"  class="form-check-input" type="radio">
-                            <label class="form-check-label">
-                            <?php echo $row['option_four']; ?>
-                            </label>
-                            </div>
+    <div class="form-group pl-4">
+    <input name="answer_<?php echo $row['qu_id'] ?>" onClick="check(4,<?php echo $row['correctIndex'] ?>,<?php echo $i; ?>,<?php echo $_SESSION['totques']?>)"  class="form-check-input" type="radio">
+    <label class="form-check-label">
+    <?php echo $row['option_four']; ?>
+    </label>
+    </div>
+                        </div>
 
 
                         <?php $i=$i+1; } ?>
@@ -73,7 +75,7 @@ $_SESSION['totques']=mysqli_num_rows($get_question);
 
                 </div>
               </div>
-              <button onClick="submit()"  class="btn btn-white float-right categoryModal">Submit</button>
+              <!-- <button onClick="submit()" style="display:none;"  class="btn btn-white float-right categoryModal subbtn">Submit</button> -->
             </div>
 
           </div>
@@ -98,3 +100,8 @@ $_SESSION['totques']=mysqli_num_rows($get_question);
 
 <?php include('includes/footer.php')?>
 <script src="./js/ajax.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#qu_1").show();
+  })
+</script>
