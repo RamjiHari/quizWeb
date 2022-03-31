@@ -1,12 +1,8 @@
 <?php
 session_start();
 $link = $_SERVER['REQUEST_URI'];
-
 $link_array = explode('/',$link);
 $page = end($link_array);
-if(empty($page)){
-  $page='index';
-}
 $str = strpos("$page", '.');
 if($str){
   $_SESSION["page"]=strstr($page, '.', true);
@@ -31,7 +27,7 @@ include('includes/header.php');
             <form class="form" action="./cms/log_check.php">
               <div class="card card-login">
                 <div class="card-header card-header-primary text-center">
-                  <h4 class="card-title">Login</h4>
+                  <h4 class="card-title">Register</h4>
                   <div class="social-line">
                     <a href="javascript:;" class="btn btn-just-icon btn-link text-white">
                       <i class="fa fa-facebook-square"></i>
@@ -53,7 +49,17 @@ include('includes/header.php');
                           <i class="material-icons">email</i>
                         </span>
                       </div>
-                      <input type="username" name="username"  class="form-control" placeholder="Email...">
+                      <input type="email" name="email"  class="form-control" placeholder="Email...">
+                    </div>
+                  </span>
+                  <span class="md-form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="material-icons">email</i>
+                        </span>
+                      </div>
+                      <input type="username" name="username"  class="form-control" placeholder="UserName...">
                     </div>
                   </span>
                   <span class="md-form-group">
@@ -68,11 +74,11 @@ include('includes/header.php');
                   </span>
                 </div>
                 <div class="card-footer justify-content-center">
-                <input type="submit" class="btn btn-primary" value="Login" name="submit" />
+                <input type="submit" class="btn btn-primary" value="Register" name="signup" />
 
                 </div>
                 <div class="card-footer justify-content-center">
-                <a href='./signup.php'>Create new account</a>
+                <a href='./'  >Login</a>
   </div>
               </div>
             </form>

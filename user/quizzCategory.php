@@ -1,8 +1,18 @@
 <?php
 session_start();
+
 include "./db/db_config.php";
 $userId=$_SESSION['user_id'];
-$get_topics=mysqli_query($con,"SELECT * FROM `quizz_categories` left join `quizz_topics` on catg_qt_id=qt_id");
+$pagId=$_SESSION['page'];
+$get_topic=mysqli_query($con,"SELECT * FROM `quizz_topics` where qt_name='$pagId'");
+$get_topic_id=mysqli_fetch_assoc($get_topic);
+if($pagId!='index' ){
+ $wc= "where catg_qt_id='".$get_topic_id['qt_id']."'";
+}else{
+  $wc='';
+}
+
+$get_topics=mysqli_query($con,"SELECT * FROM `quizz_categories` left join `quizz_topics` on catg_qt_id=qt_id $wc");
 ?>
 <div class="row">
               <div class="col-md-12">

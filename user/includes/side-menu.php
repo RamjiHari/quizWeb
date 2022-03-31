@@ -1,9 +1,13 @@
+<?php
+session_start();
+$pagId=$_SESSION['page'];
+?>
 <div class="sidebar" data-color="purple" data-background-color="default" data-image="../assets/img/sidebar-1.jpg">
       <div class="logo"><a href="./home.php" class="simple-text logo-mini">
           Q
         </a>
         <a href="./home.php" class="simple-text logo-normal">
-          Quizz
+          <?php  echo $pagId=='index' ? '': $pagId ;?> Quizz
         </a></div>
       <div class="sidebar-wrapper">
         <div class="user">
@@ -13,6 +17,7 @@
           <div class="user-info">
             <a data-toggle="collapse" href="#collapseExample" class="username">
               <span>
+
               <?php echo (ucfirst($_SESSION["username"]));?>
                 <b class="caret"></b>
               </span>
