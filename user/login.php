@@ -17,7 +17,7 @@ include('includes/header.php');
             <form class="form" action="./cms/log_check.php">
               <div class="card card-login">
                 <div class="card-header card-header-primary text-center">
-                  <h4 class="card-title">Register</h4>
+                  <h4 class="card-title">Login</h4>
                   <div class="social-line">
                     <a href="javascript:;" class="btn btn-just-icon btn-link text-white">
                       <i class="fa fa-facebook-square"></i>
@@ -39,17 +39,7 @@ include('includes/header.php');
                           <i class="material-icons">email</i>
                         </span>
                       </div>
-                      <input type="email" name="email"  class="form-control" placeholder="Email...">
-                    </div>
-                  </span>
-                  <span class="md-form-group">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="material-icons">email</i>
-                        </span>
-                      </div>
-                      <input type="username" name="username"  class="form-control" placeholder="UserName...">
+                      <input type="username" name="username"  class="form-control" placeholder="Email...">
                     </div>
                   </span>
                   <span class="md-form-group">
@@ -64,11 +54,11 @@ include('includes/header.php');
                   </span>
                 </div>
                 <div class="card-footer justify-content-center">
-                <input type="submit" class="btn btn-primary" value="Register" name="signup" />
+                <input type="submit" class="btn btn-primary" value="Login" name="submit" />
 
                 </div>
                 <div class="card-footer justify-content-center">
-                <a href='./login.php'  >Login</a>
+                <a href='./signup.php'>Create new account</a>
   </div>
               </div>
             </form>

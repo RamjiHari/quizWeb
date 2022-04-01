@@ -1,21 +1,12 @@
 <?php
 session_start();
 if(!isset($_SESSION["user_id"])) {
-  header("location:./index.php");
+  header("location:./login.php");
 }
 include "./db/db_config.php";
 include('includes/header.php');
 $_SESSION['score']=0;
-$pagId=$_SESSION['page'];
-$get_topic=mysqli_query($con,"SELECT * FROM `quizz_topics` where qt_name='$pagId'");
-$get_topic_id=mysqli_fetch_assoc($get_topic);
-if($pagId!='index'){
-  $wc= "and topic='".$get_topic_id['qt_id']."'";
- }else{
-   $wc='';
- }
-//echo "SELECT qc.catg_name as type, SUM(score) as scores ,SUM(tot_ques) as tot_ques ,count(id) as tot_count FROM quizzScore as qs left join `quizz_categories` as qc on qs.type=qc.catg_id where userId='".$_SESSION['user_id']."'  GROUP BY qs.type";die;
-$get_score=mysqli_query($con,"SELECT qc.catg_name as type, SUM(score) as scores ,SUM(tot_ques) as tot_ques ,count(id) as tot_count FROM quizzScore as qs left join `quizz_categories` as qc on qs.type=qc.catg_id where userId='".$_SESSION['user_id']."' $wc GROUP BY qs.type");
+$get_score=mysqli_query($con,"SELECT qc.catg_name as type, SUM(score) as scores ,SUM(tot_ques) as tot_ques ,count(id) as tot_count FROM quizzScore as qs left join `quizz_categories` as qc on qs.type=qc.catg_id where userId='".$_SESSION['user_id']."' GROUP BY qs.type");
 
 ?>
 

@@ -3,11 +3,12 @@ session_start();
 $pagId=$_SESSION['page'];
 ?>
 <div class="sidebar" data-color="purple" data-background-color="default" data-image="../assets/img/sidebar-1.jpg">
-      <div class="logo"><a href="./home.php" class="simple-text logo-mini">
+      <div class="logo"><a href="./index.php" class="simple-text logo-mini">
           Q
         </a>
-        <a href="./home.php" class="simple-text logo-normal">
-          <?php  echo $pagId=='index' ? '': $pagId ;?> Quizz
+        <a href="./index.php" class="simple-text logo-normal">
+
+         Quizz
         </a></div>
       <div class="sidebar-wrapper">
         <div class="user">
@@ -48,7 +49,7 @@ $pagId=$_SESSION['page'];
         </div>
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="./home.php">
+            <a class="nav-link" href="./index.php">
               <i class="material-icons">dashboard</i>
               <p> Home </p>
             </a>

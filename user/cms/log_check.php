@@ -10,11 +10,11 @@ if(mysqli_num_rows($select)>0){
     $_SESSION['user_id']=$row['id'];
     $_SESSION['username']=$row['username'];
     $_SESSION['score']=0;
-	 header('Location:../home.php');
+	 header('Location:../index.php');
 }else{
 	echo ("<script>
 alert('Username or password error');
-window.location.href='../index.php';
+window.location.href='../login.php';
 </script>");
 }
 }
@@ -24,7 +24,7 @@ if(isset($_REQUEST["signup"])){
     $login_pass=$_REQUEST["password"];
     $select=mysqli_query($con,"INSERT INTO `users` (`username`, `email`, `password`) VALUES ('$login_user', '$login_mail', '$login_pass')");
     if($select){
-         header('Location:../index.php');
+         header('Location:../login.php');
     }else{
         echo ("<script>
     alert('Registration  Failed');
