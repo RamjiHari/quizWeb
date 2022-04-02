@@ -46,7 +46,7 @@ include('includes/header.php');
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
-                          <i class="material-icons">email</i>
+                          <i class="material-icons">face</i>
                         </span>
                       </div>
                       <input type="username" name="username"  class="form-control" placeholder="UserName...">

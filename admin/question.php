@@ -2,8 +2,8 @@
 session_start();
 include "./db/db_config.php";
 $userId=$_SESSION['user_id'];
-$get_topic=mysqli_query($con,"SELECT * FROM `quizz_topics` where qt_id='$userId'");
-$get_catgeory=mysqli_query($con,"SELECT * FROM `quizz_categories` where catg_qt_id='$userId'");
+$get_topic=mysqli_query($con,"SELECT * FROM `quizz_topics` where qt_createdby='$userId'");
+$get_catgeory=mysqli_query($con,"SELECT * FROM `quizz_categories` where catg_createdby='$userId'");
 $get_questions=mysqli_query($con,"SELECT * FROM `quizz_qustions` left join `quizz_topics` on topic=qt_id  left join `quizz_categories` on type=catg_id where createdBy='$userId'  ORDER BY `qu_id`");
 ?>
 <div class="row">

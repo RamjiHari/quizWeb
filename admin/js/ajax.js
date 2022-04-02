@@ -4,12 +4,74 @@ $(document).ready(function() {
         $("#saveCategoryForm").trigger('reset');
         $("#categoryModal").modal("show");
         });
+
+            $(".topicModal").click(function(){
+
+                $("#saveTopicForm").trigger('reset');
+                $("#topicModal").modal("show");
+                });
         $(".questionModal").click(function(){
 
             $("#saveQuestionForm").trigger('reset');
             $("#questionModal").modal("show");
             });
 
+            $('#add_topic').on('click',function() {
+                var id=$('#topid').val();
+                var topic=$('#topic').val();
+                if(topic!=""){
+                   $.ajax({
+                       url:"./cms/save.php?action=topics",
+                       type:"POST",
+                       data:{
+                           id:id,
+                           topic:topic,
+                       },
+                     success: function(dataResult){
+                            console.log(dataResult);
+                            alert(dataResult);
+                            location.reload();
+
+                  }
+
+                })
+
+             }else{
+                 alert("Please fill the topics")
+             }
+            })
+
+            $('.edit_topics').on('click', function() {
+                var id=$(this).attr('id');
+                $.ajax({
+                    url:"./cms/edit.php?action=topic",
+                    type:"POST",
+                    data:{
+                        id:id,
+                    },
+                  success: function(response){
+                    var res=JSON.parse(response)
+                    console.log(`res`, res)
+                    $("#topid").val(res.qt_id)
+                    $("#topic").val(res.qt_name)
+                  }
+             })
+            })
+            $('.delete_topics').on('click', function() {
+
+                var id=$(this).attr('id')
+                $.ajax({
+                    url:"./cms/delete.php?action=topics",
+                    type:"POST",
+                    data:{
+                        id:id,
+                    },
+                  success: function(response){
+                    alert(response)
+                    location.reload();
+                  }
+             })
+            })
     $('.delete_category').on('click', function() {
 
         var id=$(this).attr('id')

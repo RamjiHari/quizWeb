@@ -19,7 +19,7 @@ include('includes/header.php')
         <div class="content">
           <div class="container-fluid">
 
-
+          <?php include('topic.php')?>
           <?php include('category.php')?>
           <?php include('question.php')?>
 
