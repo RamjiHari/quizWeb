@@ -7,7 +7,7 @@ if($_GET["action"]=='topics'){
 	$spl=mysqli_query($con,$query);
 	$queryCatg="Delete from `quizz_categories` where catg_qt_id=$id";
 	$splCatg=mysqli_query($con,$queryCatg);
-	$question="Delete FROM `quizz_qustions` WHERE `type` = $id";
+	$question="Delete FROM `quizz_qustions` WHERE `topic` = $id";
 	$questionspl=mysqli_query($con,$question);
 	if($spl){
 		echo "Delete Successfully";
