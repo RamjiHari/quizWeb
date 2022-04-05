@@ -3,6 +3,7 @@ session_start();
 include "./db/db_config.php";
 $userId=$_SESSION['user_id'];
 $get_catg=mysqli_query($con,"SELECT * FROM `quizz_categories` where catg_createdby='$userId'");
+$get_topics=mysqli_query($con,"SELECT * FROM `quizz_topics` where qt_createdby='$uderId'");
 ?>
 <div class="row">
               <div class="col-md-12">
@@ -68,6 +69,15 @@ while($row=mysqli_fetch_assoc($get_catg)){
                                 <div class="card-body ">
                                 <form method="#" action="#" autocomplete="off" id="saveCategoryForm">
                                 <input type="hidden" class="form-control" name="catgid" id="catgid">
+                                <select class="form-control" id="topic_cat_id" name="topic_cat_id" data-style="select-with-transition">
+                                        <option value="">Select Topics</option>
+                                        <?php
+                                        while($row=mysqli_fetch_assoc($get_topics)){
+                                        ?>
+                                        <option value="<?php echo $row['qt_id'];?>"><?php echo $row['qt_name'];?></option>
+                                        <?php
+                                        }?>
+                                        </select>
                                       <div class="form-group">
                                         <label for="category" class="md-label">Category</label>
                                         <input type="text" class="form-control" name="category"  id="category">

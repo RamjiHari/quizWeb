@@ -2,20 +2,22 @@ $(document).ready(function() {
     $(".categoryModal").click(function(){
 
         $("#saveCategoryForm").trigger('reset');
+        $("#catgid").val('');
         $("#categoryModal").modal("show");
         });
 
             $(".topicModal").click(function(){
 
                 $("#saveTopicForm").trigger('reset');
+                $("#topid").val('');
                 $("#topicModal").modal("show");
                 });
         $(".questionModal").click(function(){
 
             $("#saveQuestionForm").trigger('reset');
+            $("#que_category").val('');
             $("#questionModal").modal("show");
             });
-
             $('#add_topic').on('click',function() {
                 var id=$('#topid').val();
                 var topic=$('#topic').val();
@@ -101,6 +103,7 @@ $(document).ready(function() {
             console.log(`res`, res)
             $("#catgid").val(res.catg_id)
              $("#category").val(res.catg_name)
+             $("#topic_cat_id").val(res.catg_qt_id)
 
           }
      })
@@ -109,6 +112,7 @@ $(document).ready(function() {
     $('#add_category').on('click',function() {
         var id=$('#catgid').val();
         var category=$('#category').val();
+        var topic=$('#topic_cat_id').val();
         if(category!=""){
            $.ajax({
                url:"./cms/save.php?action=category",
@@ -116,6 +120,7 @@ $(document).ready(function() {
                data:{
                    id:id,
                    category:category,
+                   topic:topic
                },
              success: function(dataResult){
                     console.log(dataResult);
